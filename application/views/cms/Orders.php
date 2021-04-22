@@ -5,23 +5,27 @@
       <div class="col-lg-12">
         <section class="panel">
           <header class="panel-heading">
-            Administrators
+            Orders
             <?php if ($flash_msg = $this->session->flash_msg): ?>
               <br><sub style="color: <?php echo $flash_msg['color'] ?>"><?php echo $flash_msg['message'] ?></sub>
             <?php endif; ?>
           </header>
           <div class="panel-body">
             <p>
-              <button type="button" class="add-btn btn btn-success btn-sm">Add new</button>
+              <button type="button" class="add-btn btn btn-success btn-sm">Add new Order</button>
             </p>
             <div class="table-responsive" style="overflow: hidden; outline: none;" tabindex="1">
               <table class="table table-bordered">
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Contact Number</th>
+                    <th>Order Type</th>
+                    <th>Order Images</th>
+                    <th>Order Cost</th>
+                    <th>Status</th>
+                    <th>Order Date</th>
+                    <th>Delivery Date</th>
+                    <th>Delivery Status</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -31,14 +35,18 @@
                     <?php $i = 1; foreach ($res as $key => $value): ?>
                       <tr>
                         <th scope="row"><?php echo $i++ ?></th>
-                        <td><?php echo $value->name ?></td>
-                        <td><?php echo $value->email ?></td>
-                        <td><?php echo $value->contact ?></td>
+                        <td><?php echo $value->order_type ?></td>
+                        <td><?php echo $value->order_images ?></td>
+                        <td><?php echo $value->order_cost ?></td>
+                        <td><?php echo $value->status ?></td>
+                        <td><?php echo $value->order_date ?></td>
+                        <td><?php echo $value->delivery_date ?></td>
+                        <td><?php echo $value->delivery_status ?></td>
                         <td>
                           <button type="button"
-                          data-payload='<?php echo json_encode(['id' => $value->id, 'name' => $value->name, 'email' => $value->email, 'contact' => '$value->contact'])?>'
+                          data-payload='<?php echo json_encode(['order_id' => $value->order_id, 'order_type' => $value->order_type, 'order_images' => $value->order_images_f, 'order_cost' => $value->order_cost, 'status' => $value->status, 'order_date' => $value->order_date, 'delivery_date' => $value->delivery_date, 'delivery_status' => $value->delivery_status])?>'
                           class="edit-row btn btn-info btn-xs">Edit</button>
-                          <button type="button" data-id='<?php echo $value->id; ?>'
+                          <button type="button" data-id='<?php echo $value->order_id; ?>'
                             class="btn btn-delete btn-danger btn-xs">Delete</button>
                           </td>
                         </tr>
@@ -71,22 +79,34 @@
         </div>
         <div class="modal-body">
 
-          <form role="form" method="post" id="main-form">
+          <form role="form" method="post" id="main-form" enctype="multipart/form-data">
             <div class="form-group">
-              <label >Name</label>
-              <input type="text" class="form-control" name="name" placeholder="Name">
+              <label >Order Type</label>
+              <input type="text" class="form-control" name="order_type" placeholder="Order Type">
             </div>
             <div class="form-group">
-              <label >Email address</label>
-              <input type="email" class="form-control" name="email" placeholder="Email">
+              <label >Order Images</label>
+              <input type="file" class="form-control" name="order_images" placeholder="Order Images">
             </div>
             <div class="form-group">
-              <label >Password</label>
-              <input type="password" class="form-control" name="password" placeholder="New Password">
+              <label >Order Cost</label>
+              <input type="text" class="form-control" name="order_cost" placeholder="Order Cost">
             </div>
             <div class="form-group">
-              <label >Confirm Password</label>
-              <input type="password" class="form-control" id="confirm_password" placeholder="Confirm New Password">
+              <label >Status</label>
+              <input type="text" class="form-control" name="status" placeholder="Status">
+            </div>
+            <div class="form-group">
+              <label >Order Date</label>
+              <input type="date" class="form-control" name="order_date" placeholder="Order Date">
+            </div>
+            <div class="form-group">
+              <label >Delivery Date</label>
+              <input type="date" class="form-control" name="delivery_date" placeholder="Delivery Date">
+            </div>
+            <div class="form-group">
+              <label >Delivery Status</label>
+              <input type="text" class="form-control" name="delivery_status" placeholder="Delivery Status">
             </div>
 
           </div>
@@ -100,5 +120,5 @@
   </div>
   <!-- modal -->
 
-  <script src="<?php echo base_url('public/admin/js/custom/') ?>admin_management.js"></script>
+  <script src="<?php echo base_url('public/admin/js/custom/') ?>order_management.js"></script>
   <script src="<?php echo base_url('public/admin/js/custom/') ?>generic.js"></script>

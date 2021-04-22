@@ -31,7 +31,7 @@ class Migration_crud_table extends CI_Migration {
 
     # Table date defaults
     $this->dbforge->add_field("`created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP");
-    $this->dbforge->add_field("`updated_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP");
+    $this->dbforge->add_field("`updated_at` datetime NOT NULL DEFAULT '2021-04-20 00:00:00' ON UPDATE CURRENT_TIMESTAMP");
 
 
     if($this->dbforge->create_table('crud'))

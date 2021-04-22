@@ -5,23 +5,22 @@
       <div class="col-lg-12">
         <section class="panel">
           <header class="panel-heading">
-            Administrators
+            Frames
             <?php if ($flash_msg = $this->session->flash_msg): ?>
               <br><sub style="color: <?php echo $flash_msg['color'] ?>"><?php echo $flash_msg['message'] ?></sub>
             <?php endif; ?>
           </header>
           <div class="panel-body">
             <p>
-              <button type="button" class="add-btn btn btn-success btn-sm">Add new</button>
+              <button type="button" class="add-btn btn btn-success btn-sm">Add new Frame Design</button>
             </p>
             <div class="table-responsive" style="overflow: hidden; outline: none;" tabindex="1">
               <table class="table table-bordered">
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Contact Number</th>
+                    <th>Frame Type</th>
+                    <th>Frame Image</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -31,14 +30,13 @@
                     <?php $i = 1; foreach ($res as $key => $value): ?>
                       <tr>
                         <th scope="row"><?php echo $i++ ?></th>
-                        <td><?php echo $value->name ?></td>
-                        <td><?php echo $value->email ?></td>
-                        <td><?php echo $value->contact ?></td>
+                        <td><?php echo $value->frame_type ?></td>
+                        <td><center><img src="<?php echo $value->frame_image_f ?>" style="height: 100px; width: 100px;"></center></td>
                         <td>
                           <button type="button"
-                          data-payload='<?php echo json_encode(['id' => $value->id, 'name' => $value->name, 'email' => $value->email, 'contact' => '$value->contact'])?>'
+                          data-payload='<?php echo json_encode(['frame_id' => $value->frame_id, 'frame_type' => $value->frame_type, 'frame_image' => $value->frame_image_f])?>'
                           class="edit-row btn btn-info btn-xs">Edit</button>
-                          <button type="button" data-id='<?php echo $value->id; ?>'
+                          <button type="button" data-id='<?php echo $value->frame_id; ?>'
                             class="btn btn-delete btn-danger btn-xs">Delete</button>
                           </td>
                         </tr>
@@ -71,24 +69,19 @@
         </div>
         <div class="modal-body">
 
-          <form role="form" method="post" id="main-form">
+          <form role="form" method="post" id="main-form" enctype="multipart/form-data">
             <div class="form-group">
-              <label >Name</label>
-              <input type="text" class="form-control" name="name" placeholder="Name">
+              <label >Frame Type</label>
+              <input type="text" class="form-control" name="frame_type" placeholder="Frame Type">
+            </div>
+            <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+              <img src="" alt="" id="preview" />
             </div>
             <div class="form-group">
-              <label >Email address</label>
-              <input type="email" class="form-control" name="email" placeholder="Email">
+              <label for="exampleInputFile">File input</label>
+                <input type="file" name="frame_image">
+                <p class="help-block">Frame Input here</p>
             </div>
-            <div class="form-group">
-              <label >Password</label>
-              <input type="password" class="form-control" name="password" placeholder="New Password">
-            </div>
-            <div class="form-group">
-              <label >Confirm Password</label>
-              <input type="password" class="form-control" id="confirm_password" placeholder="Confirm New Password">
-            </div>
-
           </div>
           <div class="modal-footer">
             <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
@@ -100,5 +93,5 @@
   </div>
   <!-- modal -->
 
-  <script src="<?php echo base_url('public/admin/js/custom/') ?>admin_management.js"></script>
+  <script src="<?php echo base_url('public/admin/js/custom/') ?>frame_management.js"></script>
   <script src="<?php echo base_url('public/admin/js/custom/') ?>generic.js"></script>
