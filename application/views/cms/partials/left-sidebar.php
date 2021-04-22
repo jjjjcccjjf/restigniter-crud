@@ -6,7 +6,7 @@
       <i class="fa fa-bars"></i>
     </div>
     <!--logo start-->
-    <a href="index.html" class="logo" >CUADRO<span>CRUD</span></a>
+    <a href="index.html" class="logo" >RestIgniter<span>CRUD</span></a>
     <!--logo end-->
     <div class="top-nav ">
       <ul class="nav pull-right top-menu">
@@ -48,20 +48,6 @@
             <li><a <?php echo $this->uri->segment(2) === 'events' ? 'style="color:#ff6c60"': ''; ?> href="<?php echo base_url('admin/events') ?>">Events</a></li>
             <li><a <?php echo $this->uri->segment(2) === 'about' ? 'style="color:#ff6c60"': ''; ?> href="<?php echo base_url('admin/about') ?>">About</a></li>
           </ul>
-        </li>
-        <li>
-          <a href="<?php echo base_url('cms/frames') ?>"
-            class="<?php echo $this->uri->segment(1) === 'cms' && ($this->uri->segment(2) === 'frames') ? 'active': ''; ?>">
-            <i class="fa fa-cogs"></i>
-            <span>Frames</span>
-          </a>
-        </li>
-        <li>
-          <a href="<?php echo base_url('cms/orders') ?>"
-            class="<?php echo $this->uri->segment(1) === 'cms' && ($this->uri->segment(2) === 'orders') ? 'active': ''; ?>">
-            <i class="fa fa-book"></i>
-            <span>Orders</span>
-          </a>
         </li>
       </ul>
       <!-- sidebar menu end-->

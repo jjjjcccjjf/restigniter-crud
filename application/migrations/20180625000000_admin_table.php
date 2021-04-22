@@ -23,14 +23,14 @@ class Migration_admin_table extends CI_Migration {
       ),
     ));
     $this->dbforge->add_field("`created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP");
-    $this->dbforge->add_field("`updated_at` datetime NOT NULL DEFAULT '2021-04-21 00:00:00' ON UPDATE CURRENT_TIMESTAMP");
+    $this->dbforge->add_field("`updated_at` datetime NOT NULL DEFAULT '1990-01-01 00:00:00' ON UPDATE CURRENT_TIMESTAMP");
     if($this->dbforge->create_table('admin'))
     {
       $table = 'admin';
 
       $data = array(
         'name' => 'Administrator',
-        'email' => 'rmagsakay@myoptimind.com',
+        'email' => 'lsalamante@myoptimind.com',
         'password' => password_hash('password', PASSWORD_DEFAULT)
       );
       $this->db->insert($table, $data);

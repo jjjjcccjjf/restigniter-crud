@@ -12,31 +12,11 @@ class Admin_model extends Admin_core_model
     $this->per_page = 15;
   }
 
-  public function add($data)
-  {
-    $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-    return $this->db->insert($this->table, $data);
-  }
-
-
-  public function update($id, $data)
-  {
-    if (!$data['password']) {
-      unset($data['password']);
-    } else {
-      $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-    }
-    $this->db->where('id', $id);
-    return $this->db->update($this->table, $data);
-  }
-
-
-
-  public function delete($id)
-  {
-    $this->db->where('id', $id);
-    return $this->db->delete($this->table);
-
-  }
+  // public function add($data)
+  // {
+  // 	$data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+  //   $this->db->insert($this->table, $data);
+  //   return $this->db->insert_id();
+  // }
 
 }
